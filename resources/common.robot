@@ -2,7 +2,10 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-
+${LogInButton}  //*[@id="w3loginbtn"]
+${EmailField}  //*[@id="modalusername"]
+${PasswordField}  //*[@id="current-password"]
+${LogInWithCredentials}  //*[@id="root"]/div/div/div[4]/div[1]/div/div[4]/div[1]/button
 *** Keywords ***
 Sleep & Close Browser
     Sleep    2s
@@ -20,3 +23,4 @@ Log In Procedure
     Input Text   ${PasswordField}    Awds123$
     Textfield Should Contain    ${PasswordField}   Awds123$
     Click Element    ${LogInWithCredentials}
+    Wait Until Page Contains    My learning
