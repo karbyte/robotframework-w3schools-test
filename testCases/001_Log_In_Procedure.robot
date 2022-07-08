@@ -6,7 +6,6 @@ Resource  ../resources/common.robot
 ${URL}  https://www.w3schools.com
 ${Browser}  Chrome
 
-
 *** Test Cases ***
 case_001 Login procedure
     Open Browser  ${URL}  ${Browser}
