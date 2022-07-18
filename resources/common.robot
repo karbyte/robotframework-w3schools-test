@@ -2,11 +2,13 @@
 Library  SeleniumLibrary
 
 *** Variables ***
+#Login variables
 ${LogInButton}  //*[@id="w3loginbtn"]
 ${EmailField}  //*[@id="modalusername"]
 ${PasswordField}  //*[@id="current-password"]
 ${LogInWithCredentials}  //*[@id="root"]/div/div/div[4]/div[1]/div/div[4]/div[1]/button
 
+#Search for a Course & submit an answer to a question
 ${BrowseAllTutorials}  //*[@id="root"]/div/div[9]/div/div[2]/button
 ${SearchTutorialsTextField}  //*[@id="root"]/div/div[3]/div[2]/form/input
 ${PythonCourseId}  //*[@id="root"]/div/div[4]/div/div[2]/div[1]/div/div[1]/img
@@ -35,7 +37,7 @@ Log In Procedure
     Wait Until Page Contains    My learning
 
 Search for a Course
-        Click Element    ${BrowseAllTutorials}
+    Click Element    ${BrowseAllTutorials}
     Wait Until Page Contains    All tutorials
     Input Text    ${SearchTutorialsTextField}    python
     Click Element    ${PythonCourseId}
@@ -44,3 +46,4 @@ Search for a Course
     Click Element    ${SubmitAnswerInCourse}
     Switch Window    new
     Input Text    ${AnswerTextField}    print
+    Click Element    ${SubmitAnswerInQuiz}

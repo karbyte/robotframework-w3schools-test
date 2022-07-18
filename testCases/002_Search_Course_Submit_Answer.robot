@@ -13,4 +13,3 @@ case_002 Search for a Python course & submit an answer to a quest
     Log In Procedure
     Sleep  3s
     Search for a Course
-    Sleep & Close Browser
