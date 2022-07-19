@@ -37,20 +37,22 @@ Sleep & Close Browser
     Close Browser
 
 Logging in with credentials & performing credentials check
+    [Arguments]   ${Email}   ${Password}
     Click Element    ${LogInButton}
-    Input Text    ${EmailField}  ${UserEmail}
-    Textfield Should Contain    ${EmailField}   ${UserEmail}
-    Input Text   ${PasswordField}    ${UserPassword}
-    Textfield Should Contain    ${PasswordField}   ${UserPassword}
+    Input Text    ${EmailField}  ${Email}
+    Textfield Should Contain    ${EmailField}   ${Email}
+    Input Text   ${PasswordField}    ${Password}
+    Textfield Should Contain    ${PasswordField}   ${Password}
     Click Element    ${LogInWithCredentials}
-    Wait Until Page Contains    My learning
+    Wait Until Page Contains    My learning  10
 
 Search for a specific course
+    [Arguments]   ${Keyword}
     Sleep    2s
     Scroll Element Into View    ${BrowseAllTutorials}
     Click Element    ${BrowseAllTutorials}
     Wait Until Page Contains    All tutorials
-    Input Text    ${SearchTutorialsTextField}    ${CourseKeyword}
+    Input Text    ${SearchTutorialsTextField}    ${Keyword}
     Click Element    ${PythonCourseId}
     Wait Until Page Contains    Learn Python
 
