@@ -6,5 +6,6 @@ Test Setup  Open browser, maximize browser window & close cookie pop-up
 Test Teardown  Sleep & Close Browser
 
 *** Test Cases ***
-testcase_001_Open_browser_and_log_in_user_account
+testcase_002_Search_for_a_course
     Logging in with credentials & performing credentials check
+    Search for a specific course

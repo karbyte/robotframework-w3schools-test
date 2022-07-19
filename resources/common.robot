@@ -2,48 +2,59 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-#Login variables
+
+#setup variables
+${URL}  https://www.w3schools.com
+${Browser}  Chrome
+
+#001
 ${LogInButton}  //*[@id="w3loginbtn"]
 ${EmailField}  //*[@id="modalusername"]
+${UserEmail}  yolotzin.jadalee@moondoo.org
 ${PasswordField}  //*[@id="current-password"]
+${UserPassword}  Awds123$
 ${LogInWithCredentials}  //*[@id="root"]/div/div/div[4]/div[1]/div/div[4]/div[1]/button
 
-#Search for a Course & submit an answer to a question
+#002
 ${BrowseAllTutorials}  //*[@id="root"]/div/div[9]/div/div[2]/button
 ${SearchTutorialsTextField}  //*[@id="root"]/div/div[3]/div[2]/form/input
+${CourseKeyword}  python
 ${PythonCourseId}  //*[@id="root"]/div/div[4]/div/div[2]/div[1]/div/div[1]/img
-${Continue}  //*[@id="root"]/div/div[2]/div[2]/div[1]/div[1]/div[2]/button
-${SubmitAnswerInCourse}  //*[@id="w3-exerciseform"]/div/button
-${AnswerTextField}  //*[@id="assignmentcontainer"]/input
-${SubmitAnswerInQuiz}   //*[@id="answerbutton"]
+
+#003
+${PricingLink}  //*[@id="root"]/div/div[8]/div/div[2]/div/button
+${EnrollButton}  //*[@id="enroll-footer"]/a
 
 *** Keywords ***
-Sleep & Close Browser
-    Sleep    2s
-    Close Browser
-
-Maximize Browser Window and Accept Cookie
+Open browser, maximize browser window & close cookie pop-up
+    Open Browser  ${URL}  ${Browser}
     Maximize Browser Window
     Wait Until Page Contains Element    //*[@id="accept-choices"]
     Click Element    //*[@id="accept-choices"]
 
-Log In Procedure
+Sleep & Close Browser
+    Sleep    2s
+    Close Browser
+
+Logging in with credentials & performing credentials check
     Click Element    ${LogInButton}
-    Input Text    ${EmailField}    yolotzin.jadalee@moondoo.org
-    Textfield Should Contain    ${EmailField}   yolotzin.jadalee@moondoo.org
-    Input Text   ${PasswordField}    Awds123$
-    Textfield Should Contain    ${PasswordField}   Awds123$
+    Input Text    ${EmailField}  ${UserEmail}
+    Textfield Should Contain    ${EmailField}   ${UserEmail}
+    Input Text   ${PasswordField}    ${UserPassword}
+    Textfield Should Contain    ${PasswordField}   ${UserPassword}
     Click Element    ${LogInWithCredentials}
     Wait Until Page Contains    My learning
 
-Search for a Course
+Search for a specific course
+    Sleep    2s
+    Scroll Element Into View    ${BrowseAllTutorials}
     Click Element    ${BrowseAllTutorials}
     Wait Until Page Contains    All tutorials
-    Input Text    ${SearchTutorialsTextField}    python
+    Input Text    ${SearchTutorialsTextField}    ${CourseKeyword}
     Click Element    ${PythonCourseId}
     Wait Until Page Contains    Learn Python
-    Click Element    ${Continue}
-    Click Element    ${SubmitAnswerInCourse}
-    Switch Window    new
-    Input Text    ${AnswerTextField}    print
-    Click Element    ${SubmitAnswerInQuiz}
+
+Opening pricing tab & check enroll button
+    Click Element  ${PricingLink}
+    Switch Window  new
+    Scroll Element Into View    ${EnrollButton}
