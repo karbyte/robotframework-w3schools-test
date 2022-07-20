@@ -25,6 +25,14 @@ ${PythonCourseId}  //*[@id="root"]/div/div[4]/div/div[2]/div[1]/div/div[1]/img
 ${PricingLink}  //*[@id="root"]/div/div[8]/div/div[2]/div/button
 ${EnrollButton}  //*[@id="enroll-footer"]/a
 
+#004
+${HomeButton}  //*[@id="root"]/div/div[1]/div/div[3]/div/a
+${ReferencesTab}  //*[@id="navbtn_references"]
+${PythonReferencesTab}  //*[@id="nav_references"]/div/div/div[3]/a[7]
+${PythonBuiltInFunctions}  //*[@id="main"]/div[3]/a[1]
+${isInstanceFunction}  //*[@id="main"]/table/tbody/tr[35]/td[1]/a
+${FunctionSyntax}  //*[@id="main"]/h2[2]
+
 *** Keywords ***
 Open browser, maximize browser window & close cookie pop-up
     Open Browser  ${URL}  ${Browser}
@@ -60,3 +68,20 @@ Opening pricing tab & check enroll button
     Click Element  ${PricingLink}
     Switch Window  new
     Scroll Element Into View    ${EnrollButton}
+
+Choosing references tab
+    Wait Until Page Contains Element    ${HomeButton}
+    Scroll Element Into View    ${HomeButton}
+    Click Element    ${HomeButton}
+    Wait Until Page Contains Element   ${ReferencesTab}
+    Click Element    ${ReferencesTab}
+
+Choosing Python references tab
+    Wait Until Page Contains Element  ${PythonReferencesTab}
+    Click Element    ${PythonReferencesTab}
+    Click Element    ${PythonBuiltInFunctions}
+
+Choose a specific built-in function overview
+    Click Element    ${isInstanceFunction}
+    Scroll Element Into View    ${FunctionSyntax}
+    Sleep    2s
