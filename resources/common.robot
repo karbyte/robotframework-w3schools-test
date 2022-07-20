@@ -33,6 +33,11 @@ ${PythonBuiltInFunctions}  //*[@id="main"]/div[3]/a[1]
 ${isInstanceFunction}  //*[@id="main"]/table/tbody/tr[35]/td[1]/a
 ${FunctionSyntax}  //*[@id="main"]/h2[2]
 
+#005
+${ExercisesTab}  //*[@id="navbtn_exercises"]
+${PythonExercisesTab}  //*[@id="nav_exercises"]/div/div/div[2]/a[7]
+${StartPythonExercise}  //*[@id="main"]/div[3]/p[2]/a
+
 *** Keywords ***
 Open browser, maximize browser window & close cookie pop-up
     Open Browser  ${URL}  ${Browser}
@@ -69,10 +74,12 @@ Opening pricing tab & check enroll button
     Switch Window  new
     Scroll Element Into View    ${EnrollButton}
 
-Choosing references tab
+Getting to homepage
     Wait Until Page Contains Element    ${HomeButton}
     Scroll Element Into View    ${HomeButton}
     Click Element    ${HomeButton}
+
+Choosing references tab
     Wait Until Page Contains Element   ${ReferencesTab}
     Click Element    ${ReferencesTab}
 
@@ -84,4 +91,17 @@ Choosing Python references tab
 Choose a specific built-in function overview
     Click Element    ${isInstanceFunction}
     Scroll Element Into View    ${FunctionSyntax}
+    Sleep    2s
+
+Expanding Exercises tab
+    Wait Until Page Contains Element    ${ExercisesTab}
+    Click Element    ${ExercisesTab}
+
+Choosing Python Exercises
+    Wait Until Page Contains Element    ${PythonExercisesTab}
+    Click Element    ${PythonExercisesTab}
+
+Setting focus & starting Python Exercises
+    Wait Until Page Contains Element    ${StartPythonExercise}
+    Click Element    ${StartPythonExercise}
     Sleep    2s

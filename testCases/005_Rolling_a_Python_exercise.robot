@@ -6,9 +6,9 @@ Test Setup  Open browser, maximize browser window & close cookie pop-up
 Test Teardown  Sleep & Close Browser
 
 *** Test Cases ***
-testcase_004_Checking_Python_references_and_choosing_built-in_functions
+testcase_005_Rolling_a_python_exercise_and_starting_it
     Logging in with credentials & performing credentials check  Email=${UserEmail}   Password=${UserPassword}
     Getting to homepage
-    Choosing references tab
-    Choosing Python references tab
-    Choose a specific built-in function overview
+    Expanding Exercises tab
+    Choosing Python Exercises
+    Setting focus & starting Python Exercises
